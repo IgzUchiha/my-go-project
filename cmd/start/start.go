@@ -6,7 +6,6 @@ import (
     "log"
     "time"
     "my-go-project/app"
-
     "go.temporal.io/sdk/client"
 )
 
@@ -25,7 +24,7 @@ func main() {
     }
 
     state := app.CartState{Items: make([]app.CartItem, 0)}
-    _, err = c.ExecuteWorkflow(context.Background(), options, app.CartWorkflowExample, state) // use = instead of :=
+    _, err = c.ExecuteWorkflow(context.Background(), options, app.CartWorkflowExample, state)
     if err != nil {
         log.Fatalln("unable to execute workflow", err)
     }
