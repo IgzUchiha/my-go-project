@@ -8,9 +8,9 @@ services:
       - cluster.routing.allocation.disk.watermark.high=256mb
       - cluster.routing.allocation.disk.watermark.flood_stage=128mb
       - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
       - xpack.security.enabled=false
-    image: elasticsearch:${ELASTICSEARCH_VERSION:-7.10.2}
+    image: elasticsearch:${ELASTICSEARCH_VERSION:-7.10}
     networks:
       - temporal-network
     expose:
@@ -72,7 +72,8 @@ services:
     environment:
       - TEMPORAL_ADDRESS=temporal:7233
       - TEMPORAL_CORS_ORIGINS=http://localhost:3000
-    image: temporalio/ui:${TEMPORAL_UI_VERSION:-v1.13.0}
+      - TEMPORAL_UI_VERSION=latest
+    image: temporalio/ui:latest
     networks:
       - temporal-network
     ports:

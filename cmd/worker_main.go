@@ -5,8 +5,8 @@ import (
     "go.temporal.io/sdk/client"
     "go.temporal.io/sdk/worker"
     "os"
-    "temporal-ecommerce/app"
 )
+
 
 var (
     stripeKey     = os.Getenv("STRIPE_PRIVATE_KEY")

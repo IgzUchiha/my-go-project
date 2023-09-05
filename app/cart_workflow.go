@@ -2,6 +2,7 @@ package app
 
 import (
     "go.temporal.io/sdk/workflow"
+    // "my-go-project/app"
 )
 
 type (
