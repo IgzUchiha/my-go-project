@@ -6,6 +6,7 @@ import (
     "go.temporal.io/sdk/worker"
     "os"
     "temporal-ecommerce/app"
+    "my-go-project/app"
 )
 
 var (
