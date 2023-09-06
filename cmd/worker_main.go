@@ -2,9 +2,10 @@ package main
 
 import (
     "log"
+    "os"
     "go.temporal.io/sdk/client"
     "go.temporal.io/sdk/worker"
-    "os"
+    "my-go-project/app/abandoned_cart" // Add this line
 )
 
 
@@ -34,16 +35,16 @@ func main() {
         log.Fatalln("Must set MAILGUN_PRIVATE_KEY environment variable")
     }
 
-    a := &app.Activities{
+    a := &abandoned_cart.Activities{
         StripeKey: stripeKey,
         MailgunDomain: mailgunDomain,
         MailgunKey: mailgunKey,
     }
-
+    
     w.RegisterActivity(a.CreateStripeCharge)
     w.RegisterActivity(a.SendAbandonedCartEmail)
-
-    w.RegisterWorkflow(app.CartWorkflow)
+    
+    w.RegisterWorkflow(abandoned_cart.CartWorkflow)
     // Start listening to the Task Queue
     err = w.Run(worker.InterruptCh())
     if err != nil {
